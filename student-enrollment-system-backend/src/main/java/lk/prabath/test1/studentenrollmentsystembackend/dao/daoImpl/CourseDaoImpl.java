@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Repository
-@Service
 public class CourseDaoImpl implements CourseDao {
     private final CourseRepository repository;
 
@@ -33,8 +32,8 @@ public class CourseDaoImpl implements CourseDao {
         Course existingCourse = repository.findById(entity.getId()).orElse(null);
         if (existingCourse == null)return;
         existingCourse.setId(entity.getId());
-        existingCourse.setName(entity.getId());
-        existingCourse.setDivision(entity.getId());
+        existingCourse.setName(entity.getName());
+        existingCourse.setDivision(entity.getDivision());
     }
 
     @Override

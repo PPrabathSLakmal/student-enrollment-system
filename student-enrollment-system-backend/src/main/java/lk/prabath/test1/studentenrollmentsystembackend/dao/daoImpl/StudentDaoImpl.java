@@ -3,10 +3,12 @@ package lk.prabath.test1.studentenrollmentsystembackend.dao.daoImpl;
 import lk.prabath.test1.studentenrollmentsystembackend.dao.StudentDao;
 import lk.prabath.test1.studentenrollmentsystembackend.entity.Student;
 import lk.prabath.test1.studentenrollmentsystembackend.repsitory.StudentRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class StudentDaoImpl implements StudentDao {
     private final StudentRepository repository;
 

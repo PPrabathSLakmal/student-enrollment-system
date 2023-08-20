@@ -4,11 +4,15 @@ import lk.prabath.test1.studentenrollmentsystembackend.business.CourseBo;
 import lk.prabath.test1.studentenrollmentsystembackend.business.util.Transformer;
 import lk.prabath.test1.studentenrollmentsystembackend.dao.CourseDao;
 import lk.prabath.test1.studentenrollmentsystembackend.dto.CourseDto;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Transactional
+@Service
 public class CourseBoImpl implements CourseBo {
     private final CourseDao courseDao;
     private final Transformer transformer;

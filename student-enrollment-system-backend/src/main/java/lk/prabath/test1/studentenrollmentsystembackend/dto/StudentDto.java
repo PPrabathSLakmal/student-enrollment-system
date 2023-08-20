@@ -12,20 +12,18 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentDto {
-    @NotBlank(message = "ID can not be blank")
-    @Pattern(regexp = "\\d{3}")
     private int studentId;
     @NotBlank(message = "Name can not be empty")
-    @Pattern(regexp = "[A-Za-z ]+")
+    @Pattern(regexp = "[A-Za-z ]+", message = "Invalid name type")
     private String name;
     @NotBlank(message = "NIC can not be empty")
-    @Pattern(regexp = "\\d{9}[Vv]")
+    @Pattern(regexp = "\\d{9}[Vv]", message = "Invalid NIC")
     private String nic;
     @NotBlank(message = "Address can not be empty")
     @Length(min = 3,message = "Enter a valid address")
     private String address;
     @NotBlank(message = "Contact number can not be empty")
-    @Pattern(regexp = "\\d{3}-\\d{7}")
+    @Pattern(regexp = "\\d{3}-\\d{7}", message = "Invalid contact number")
     private String contact;
 
 }

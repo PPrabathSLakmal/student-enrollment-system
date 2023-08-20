@@ -5,11 +5,15 @@ import lk.prabath.test1.studentenrollmentsystembackend.business.util.Transformer
 import lk.prabath.test1.studentenrollmentsystembackend.dao.StudentDao;
 import lk.prabath.test1.studentenrollmentsystembackend.dto.StudentDto;
 import lombok.val;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
+@Transactional
 public class StudentBoImpl implements StudentBo {
     private final StudentDao studentDao;
     private final Transformer transformer;
