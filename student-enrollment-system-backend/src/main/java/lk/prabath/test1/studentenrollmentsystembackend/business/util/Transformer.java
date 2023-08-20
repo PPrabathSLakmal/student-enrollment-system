@@ -2,8 +2,10 @@ package lk.prabath.test1.studentenrollmentsystembackend.business.util;
 
 import lk.prabath.test1.studentenrollmentsystembackend.dto.CourseDto;
 import lk.prabath.test1.studentenrollmentsystembackend.dto.StudentDto;
+import lk.prabath.test1.studentenrollmentsystembackend.dto.UserDto;
 import lk.prabath.test1.studentenrollmentsystembackend.entity.Course;
 import lk.prabath.test1.studentenrollmentsystembackend.entity.Student;
+import lk.prabath.test1.studentenrollmentsystembackend.entity.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -23,5 +25,12 @@ public class Transformer {
     }
     public StudentDto fromStudentEntity(Student student) {
         return mapper.map(student, StudentDto.class);
+    }
+
+    public User toUserEntity(UserDto userDto){
+        return mapper.map(userDto, User.class);
+    }
+    public UserDto fromUserEntity(User user) {
+        return mapper.map(user, UserDto.class);
     }
 }
