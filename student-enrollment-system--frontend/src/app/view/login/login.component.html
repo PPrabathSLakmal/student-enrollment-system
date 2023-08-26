@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center align-items-center" id="main-container">
+  <section class="d-flex flex-column border justify-content-center align-items-center" id="login-container">
+    <h1 class="fw-bold bg-dark text-white">Student Enrollment System</h1>
+    <div class="d-flex flex-column gap-2 justify-content-center align-items-center">
+      <h2 class="text-primary-emphasis">Sign in</h2>
+      <label  for="username" class="form-label">Username</label>
+      <div class="input-group ">
+        <input #username ngModel #nameModel="ngModel" [class.is-invalid]="nameModel.dirty && nameModel.invalid" type="text" class="form-control text-center" id="username" aria-describedby="inputGroupPrepend2"  required>
+      </div>
+      <label  for="password" class="form-label ">Password</label>
+      <div class="input-group">
+        <input #password minlength="4" ngModel #passwordModel="ngModel" [class.is-invalid]="passwordModel.dirty && passwordModel.invalid" type="password" class="form-control text-center" id="password" aria-describedby="inputGroupPrepend2" required>
+      </div>
+      <div id="signup">Don't you have an account? Click the link to create <a routerLink="signup" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Sign up</a> </div>
+
+      <div id="btnContainer" class="d-flex gap-2 p-4">
+        <button class="btn btn-primary" type="submit"  (click)="login(username, password)">Login</button>
+        <button class="btn btn-warning" type="reset" (click)="nameModel.reset();passwordModel.reset();username.focus()">Clear</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
