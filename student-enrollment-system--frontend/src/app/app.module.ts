@@ -3,11 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, NgModel} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
 import { LoginComponent } from './view/login/login.component';
 import { SignupComponent } from './view/signup/signup.component';
+import { HomeComponent } from './view/home/home.component';
 export const routes:Routes = [
   {
     path:"",
@@ -16,13 +17,18 @@ export const routes:Routes = [
   {
     path:"signup",
     component:SignupComponent
+  },
+  {
+    path:"home",
+    component:HomeComponent
   }
 ]
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    // HomeComponent
   ],
   imports: [
     BrowserModule,
