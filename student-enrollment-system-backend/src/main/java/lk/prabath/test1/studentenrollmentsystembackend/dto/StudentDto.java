@@ -26,4 +26,6 @@ public class StudentDto {
     @Pattern(regexp = "\\d{3}-\\d{7}", message = "Invalid contact number")
     private String contact;
 
+    private String courseId;
+
 }

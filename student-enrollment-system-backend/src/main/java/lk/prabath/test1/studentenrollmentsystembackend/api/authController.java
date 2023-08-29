@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.sql.SQLException;
-
 @RestController
 @CrossOrigin
 @RequestMapping("api/v1/auth")
@@ -26,8 +25,9 @@ public class authController {
         userBo.signUp(userDto);
     }
 
-    @PostMapping(value = "/login", consumes = "application/json")
+    @PostMapping( "/login")
     public void login(@RequestBody @Valid UserDto userDto, HttpServletRequest request) throws SQLException {
+        System.out.println("Awoooo");
         userBo.login(userDto, request);
     }
 

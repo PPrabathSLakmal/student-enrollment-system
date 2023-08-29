@@ -2,6 +2,7 @@ package lk.prabath.test1.studentenrollmentsystembackend.api;
 
 import lk.prabath.test1.studentenrollmentsystembackend.business.StudentBo;
 import lk.prabath.test1.studentenrollmentsystembackend.dto.StudentDto;
+import lk.prabath.test1.studentenrollmentsystembackend.entity.Student;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,8 @@ public class StudentController {
     }
     @GetMapping
     public List<StudentDto> getStudents(){
-        return studentBo.findAllStudents();
+        List<StudentDto> studentList = studentBo.findAllStudents();
+        System.out.println(studentList);
+        return studentList;
     }
 }
