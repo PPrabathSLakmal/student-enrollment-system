@@ -9,16 +9,14 @@ import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {Student} from "../../dto/Student";
 import {GetAllStudentsService} from "../../service/get-all-students.service";
 import {HttpClient} from "@angular/common/http";
-
-class PeriodicElement {
-}
+import {Router, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [NgIf, MatSidenavModule, MatCheckboxModule, FormsModule, MatButtonModule, NgForOf, MatTableModule, MatPaginatorModule]
+  imports: [NgIf, MatSidenavModule, MatCheckboxModule, FormsModule, MatButtonModule, NgForOf, MatTableModule, MatPaginatorModule, RouterOutlet]
 })
 export class HomeComponent {
   showFiller = false;
@@ -28,7 +26,7 @@ export class HomeComponent {
   displayedColumns: string[] = ['studentId', 'name', 'address', 'contact'];
   dataSource = new MatTableDataSource<Student>();
 
-  constructor(public http: HttpClient,private getAllStudentsService:GetAllStudentsService) {
+  constructor(public http: HttpClient,private getAllStudentsService:GetAllStudentsService, private router:Router) {
     this.getAllStudentsService.getStudents(http).subscribe(studentsList => {
       this.studentList = studentsList;
       this.dataSource.data = studentsList; // Update the dataSource with the received data
@@ -46,9 +44,11 @@ export class HomeComponent {
   sideNav(drawer: MatDrawer, row:Student) {
     if (this.sameStudent){
       drawer.toggle();
+      this.router.navigateByUrl("/home(side-nav:details;open=true)");
       this.sameStudent = false;
     }else if (row === this.previousStudent){
       drawer.toggle();
+      this.router.navigate([{ outlets: { 'side-nav': ['details'] }}  ]);
       this.sameStudent = true;
     }
     this.previousStudent = row;

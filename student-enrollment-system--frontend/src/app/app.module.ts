@@ -9,6 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { LoginComponent } from './view/login/login.component';
 import { SignupComponent } from './view/signup/signup.component';
 import { HomeComponent } from './view/home/home.component';
+import { DetailsComponent } from './view/details/details.component';
 export const routes:Routes = [
   {
     path:"",
@@ -20,7 +21,13 @@ export const routes:Routes = [
   },
   {
     path:"home",
-    component:HomeComponent
+    component:HomeComponent,
+    children: [
+      {
+        path: "details",
+        component: DetailsComponent,
+        outlet: "side-nav"
+      }]
   }
 ]
 @NgModule({
@@ -28,6 +35,7 @@ export const routes:Routes = [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    DetailsComponent,
     // HomeComponent
   ],
   imports: [

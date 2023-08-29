@@ -10,14 +10,15 @@
         <button (click)="showFiller = !showFiller" mat-raised-button>
           Toggle extra text
         </button>
+        <div class="side-nav">
+          <router-outlet name="side-nav"></router-outlet>
+        </div>
+
       </mat-drawer>
 
       <div class="example-sidenav-content">
-        <button type="button" mat-button >
-          Toggle sidenav
-        </button>
         <div class="mat-elevation-z8">
-          <table mat-table [dataSource]="dataSource">
+          <table mat-table [dataSource]="dataSource" >
 
             <!-- Position Column -->
             <ng-container matColumnDef="studentId">
