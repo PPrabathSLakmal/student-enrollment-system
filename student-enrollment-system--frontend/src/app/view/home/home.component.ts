@@ -1,22 +1,18 @@
 import {Component, ViewChild} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
 import {MatDrawer, MatSidenavModule} from "@angular/material/sidenav";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {FormsModule} from "@angular/forms";
-import {MatButtonModule} from "@angular/material/button";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {Student} from "../../dto/Student";
 import {GetAllStudentsService} from "../../service/get-all-students.service";
 import {HttpClient} from "@angular/common/http";
-import {Router, RouterOutlet} from "@angular/router";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  standalone: true,
-  imports: [NgIf, MatSidenavModule, MatCheckboxModule, FormsModule, MatButtonModule, NgForOf, MatTableModule, MatPaginatorModule, RouterOutlet]
+  // standalone: true,
+  // imports: [NgIf, MatSidenavModule, MatCheckboxModule, FormsModule, MatButtonModule, NgForOf, MatTableModule, MatPaginatorModule, RouterOutlet, RouterLink]
 })
 export class HomeComponent {
   showFiller = false;
@@ -44,7 +40,7 @@ export class HomeComponent {
   sideNav(drawer: MatDrawer, row:Student) {
     if (this.sameStudent){
       drawer.toggle();
-      this.router.navigateByUrl("/home(side-nav:details;open=true)");
+      this.router.navigate([{ outlets: { 'side-nav': ['details'] }}  ]);
       this.sameStudent = false;
     }else if (row === this.previousStudent){
       drawer.toggle();

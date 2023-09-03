@@ -10,6 +10,10 @@ import { LoginComponent } from './view/login/login.component';
 import { SignupComponent } from './view/signup/signup.component';
 import { HomeComponent } from './view/home/home.component';
 import { DetailsComponent } from './view/details/details.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
 export const routes:Routes = [
   {
     path:"",
@@ -24,11 +28,16 @@ export const routes:Routes = [
     component:HomeComponent,
     children: [
       {
-        path: "details",
+          path: "details",
         component: DetailsComponent,
         outlet: "side-nav"
       }]
-  }
+  },
+  // {
+  //   path: "home/details",
+  //   component: DetailsComponent,
+  //   outlet: "side-nav"
+  // }
 ]
 @NgModule({
   declarations: [
@@ -36,7 +45,7 @@ export const routes:Routes = [
     LoginComponent,
     SignupComponent,
     DetailsComponent,
-    // HomeComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +53,15 @@ export const routes:Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    MatSidenavModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
   ],
   providers: [],
+  exports: [
+    DetailsComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
