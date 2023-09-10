@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.sql.SQLException;
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RequestMapping("api/v1/auth")
 public class authController {
     private final UserBo userBo;
@@ -25,7 +25,7 @@ public class authController {
         userBo.signUp(userDto);
     }
 
-    @PostMapping( "/login")
+    @PostMapping( value = "/login",consumes = "application/json")
     public void login(@RequestBody @Valid UserDto userDto, HttpServletRequest request) throws SQLException {
         System.out.println("Awoooo");
         userBo.login(userDto, request);

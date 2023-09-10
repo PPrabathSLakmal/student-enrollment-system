@@ -14,9 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (request.getSession(false) != null){
+        if (request.getRequestURI().endsWith("/login")){
+            System.out.println("login auth");
+            return true;
+        }else if (request.getSession(false) != null){
+            System.out.println("auth session true");
             return true;
         }else{
+            System.out.println("auth session false");
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Access Denied");
         }
     }
